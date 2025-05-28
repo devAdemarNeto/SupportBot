@@ -1,0 +1,33 @@
+monitor_auxiliar_nao_gera_imagem:
+  palavras_chave:
+    - monitor não funciona
+    - problema com monitor
+    - monitor sem imagem
+  procedimentos:
+    - Se o monitor estiver com adaptador VGA/USB-C ou cabo USB-C/DVI, desconectar o USB-C do notebook e colocar novamente.
+    - Se o monitor estiver com cabo HDMI, alterar a taxa de atualização da tela para 60 hertz.
+    - Se os passos acima não funcionarem, tentar outro cabo.
+
+erro_ao_assinar_documento:
+  palavras_chave:
+    - pje office não assina
+  procedimentos:
+    - Clique com o botão direito sobre o ícone do PJE Office ao lado do relógio.
+    - Selecione a opção "Sistema" e clique 5x sobre o PJeOffice - 1.0.28 para habilitar o modo desenvolvedor.
+    - Clique em Configuração de certificado.
+    - Navegue até a aba Avançado.
+    - Clique sobre o seu certificado e insira a senha.
+    - Clique em concluir e teste novamente.
+    - Alternativamente, instale a versão mais atual do PJe Office.
+
+problema_acesso_pje_chrome:
+  palavras_chave:
+    - problema de acesso ao pje
+    - usuário não acessa o pje
+  procedimentos:
+    - Acesse o menu do navegador Google Chrome.
+    - Vá para Configurações.
+    - Clique em "Limpar dados de navegação".
+    - Selecione "Todo o período".
+    - Marque todas as opções disponíveis.
+    - Clique em "Excluir dados".

@@ -1,0 +1,12 @@
+<h1>Helpdesk Bot</h1>
+
+<%= form_with url: responder_path, method: :post, local: true do |form| %>
+  <%= form.label :mensagem, "Descreva seu problema:" %><br>
+  <%= form.text_area :mensagem, rows: 4 %><br>
+  <%= form.submit "Consultar Solução" %>
+<% end %>
+
+<% if @resposta.present? %>
+  <h2>Resposta:</h2>
+  <pre><%= @resposta %></pre>
+<% end %>
