@@ -6,39 +6,41 @@ class HelpdeskBot
     path = Rails.root.join('lib', 'bot_knowledge', 'base.yml')
     @base = YAML.load_file(path)
 
-    # Montar lista de todos os termos (palavras-chave) para busca com referência ao problema
-    @keywords_map = {} # chave: palavra-chave, valor: nome do problema
-
-    @base.each do |problema, dados|
-      palavras = dados["palavras_chave"].map(&:downcase)
-      palavras.each do |palavra|
-        @keywords_map[palavra] = problema
-      end
+    @problemas = @base.map do |chave, dados|
+      {
+        chave: chave,
+        palavras_chave: dados["palavras_chave"],
+        procedimentos: dados["procedimentos"]
+      }
     end
 
-    # Criar o objeto fuzzy_match para palavras-chave
-    @fuzzy = FuzzyMatch.new(@keywords_map.keys)
+    todas_palavras = @problemas.flat_map { |p| p[:palavras_chave] }
+    @fuzzy = FuzzyMatch.new(todas_palavras)
   end
 
   def responder(entrada)
     entrada_downcase = entrada.downcase
+    palavra_encontrada = @fuzzy.find(entrada_downcase)
 
-    # Encontrar a palavra-chave mais próxima no texto do usuário
-    match = @fuzzy.find(entrada_downcase)
+    problema_encontrado = @problemas.find do |p|
+      p[:palavras_chave].include?(palavra_encontrada)
+    end
 
-    if match
-      problema = @keywords_map[match]
-      procedimentos = @base[problema]["procedimentos"]
-      return formatar_resposta(procedimentos)
+    if problema_encontrado
+      resposta = "Problema: #{formatar_nome(problema_encontrado[:chave])}\n\n"
+      resposta += "Procedimentos para resolução:\n\n"
+      problema_encontrado[:procedimentos].each_with_index do |passo, i|
+        resposta += "#{i + 1}. #{passo}\n"
+      end
+      resposta
     else
-      return "Desculpe, não encontrei uma solução para esse problema."
+      "Desculpe, não encontrei uma solução para esse problema."
     end
   end
 
   private
 
-  def formatar_resposta(procedimentos)
-    # Formata a lista de procedimentos para texto com quebras de linha
-    procedimentos.map.with_index(1) { |p, i| "#{i}. #{p}" }.join("\n")
+  def formatar_nome(nome_chave)
+    nome_chave.tr('_', ' ').capitalize
   end
 end

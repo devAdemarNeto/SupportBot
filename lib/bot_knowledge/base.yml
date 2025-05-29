@@ -4,11 +4,11 @@ monitor_auxiliar_nao_gera_imagem:
     - problema com monitor
     - monitor sem imagem
   procedimentos:
-    - Se o monitor estiver com adaptador VGA/USB-C ou cabo USB-C/DVI, desconectar o USB-C do notebook e colocar novamente.
-    - Se o monitor estiver com cabo HDMI, alterar a taxa de atualização da tela para 60 hertz.
+    - Se o monitor não liga e  estiver com adaptador VGA/USB-C ou cabo USB-C/DVI, desconectar o USB-C do notebook e colocar novamente.
+    - Se o monitor não liga e estiver com cabo HDMI, alterar a taxa de atualização da tela para 60 hertz.
     - Se os passos acima não funcionarem, tentar outro cabo.
 
-erro_ao_assinar_documento:
+erro_ao_assinar_documento_com_pje_office:
   palavras_chave:
     - pje office não assina
   procedimentos:
@@ -20,11 +20,12 @@ erro_ao_assinar_documento:
     - Clique em concluir e teste novamente.
     - Alternativamente, instale a versão mais atual do PJe Office.
 
-problema_acesso_pje_chrome:
+problema_acesso_ao_pje_com_navegador_chrome:
   palavras_chave:
     - problema de acesso ao pje
     - usuário não acessa o pje
   procedimentos:
+    - Se não consegue acessar o pje pelo Chrome faça os procedimentor abaixo;
     - Acesse o menu do navegador Google Chrome.
     - Vá para Configurações.
     - Clique em "Limpar dados de navegação".
