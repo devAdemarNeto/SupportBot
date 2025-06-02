@@ -32,3 +32,12 @@ problema_acesso_ao_pje_com_navegador_chrome:
     - Selecione "Todo o período".
     - Marque todas as opções disponíveis.
     - Clique em "Excluir dados".
+
+
+notebook_não _liga:
+  palavras_chave:
+    - notebook_não _liga    
+  procedimentos:
+    - Confirme se o carregador está conectado corretamente e funcionando. Teste em outra tomada.
+    - Observe se o LED de carregamento acende.
+    - Caso o problema persista,enviar o notebook ao laboratório para manutenção.
